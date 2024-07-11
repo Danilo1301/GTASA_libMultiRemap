@@ -1,0 +1,5 @@
+MultiRemap starts at 0EE0
+
+; MultiRemap
+
+0EE0=0,multi_remap_toggle_menu

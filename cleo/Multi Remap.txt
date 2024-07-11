@@ -1,0 +1,10 @@
+{$CLEO .csi}
+
+//Made by Danilo1301
+
+:MAIN
+03A4: name_thread "Multi Remap"
+
+0EE0: multi_remap_toggle_menu
+
+004E: terminate_this_script
