@@ -1,3 +1,3 @@
 obj/
 libs/
-MultiRemap/*.cpp
+MultiRemap/main.cpp

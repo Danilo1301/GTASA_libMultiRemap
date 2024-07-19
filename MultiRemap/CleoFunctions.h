@@ -89,6 +89,7 @@ public:
     static void AS_ACTOR_DRIVE_CAR_TO(int driver, int vehicle, float x, float y, float z, float speed, int driveStyle, int modelId, int drivingStyle);
     static void CLEAR_ACTOR_TASK(int _char);
     static void CHANGE_PLAYER_MODEL_TO(int player, int modelId);
+    static int GET_CHAR_MODEL(int _char);
     static int GET_CAR_MODEL(int car);
     static int CREATE_ACTOR_PEDTYPE_IN_CAR_PASSENGER_SEAT(int vehicle, int pedType, int modelId, int seatId);
     static void GIVE_ACTOR_WEAPON(int _char, int weaponType, int ammo);

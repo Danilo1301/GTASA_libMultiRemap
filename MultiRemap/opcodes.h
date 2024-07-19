@@ -24,16 +24,20 @@
 #define __getPointerToScriptVar(handle)         reinterpret_cast<cleo_ifs_t::data_t*>(cleo->GetPointerToScriptVar(handle))
 
 #include "Log.h"
-
+#include "RemapModelInfo.h"
 #include "Mod.h"
+
+#include "windows/WindowMain.h"
 
 extern cleo_ifs_t* cleo;
 
-__decl_op(MULTI_REMAP_TOGGLE_MENU, 0x0EE0); // 0EE0=0,multi_remap_toggle_menu
+__decl_op(MULTI_REMAP_TOGGLE_MENU, 0x0EE0); // 0EE0=1,multi_remap_toggle_menu type %1d%
 
 static void MULTI_REMAP_TOGGLE_MENU(__handler_params)
 {
     Log::Level(LOG_LEVEL::LOG_BOTH) << "MULTI_REMAP_TOGGLE_MENU" << std::endl;
 
-    Mod::ToggleMainMenu();
+    int type = __readParam(handle)->i;
+
+    WindowMain::ToggleMenu((eRemapType)type);
 }

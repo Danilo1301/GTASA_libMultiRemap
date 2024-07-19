@@ -2,6 +2,11 @@
 
 #include "pch.h"
 
+enum eRemapType {
+    REMAP_VEHICLE,
+    REMAP_SKIN
+};
+
 /*
 configs/multiPlotagem/remaps (list of remaps)
     pmesp (Remap)
@@ -25,9 +30,10 @@ public:
 class RemapModelInfo {
 public:
     int modelId;
+    eRemapType type;
     std::map<std::string, Remap*> remaps;
 
-    RemapModelInfo(int modelId);
+    RemapModelInfo(int modelId, eRemapType type);
 
     bool HasRemap(std::string name);
     Remap* TryCreateRemap(std::string name);

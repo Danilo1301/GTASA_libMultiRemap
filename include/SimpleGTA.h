@@ -112,7 +112,7 @@ public:
 };
 
 class CCamera : public CPlaceable {};
-class CPed : public CPlaceable {};
+class CPed : public CEntity {};
 class CVehicle : public CEntity {};
 class CObject : public CPlaceable {};
 
@@ -156,4 +156,9 @@ struct GTAEntity
 struct GTAVehicleSA : GTAEntity
 {
     char structure[2604];
+};
+struct GTAPedSA : GTAEntity
+{
+    char structure[1996];
+    bool Player() { return UIntAt(1436) < 2; }
 };
