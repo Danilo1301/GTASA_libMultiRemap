@@ -30,6 +30,9 @@ Initial release
 [X] remaps to peds too
 [X] peds get their remap from their vehicle
 
+[1.1.1]
+[ ] add interface
+
 --------------------------
 Notes:
 

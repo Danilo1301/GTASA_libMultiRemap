@@ -5,6 +5,8 @@
 #include "Vehicles.h"
 #include "Peds.h"
 
+#include "MultiRemap.h"
+
 extern IMenuVSL* menuVSL;
 
 extern CVehicle* (*FindPlayerVehicle)(int playerId, bool bIncludeRemote);
@@ -61,6 +63,18 @@ void WindowMain::CreateVehicle(Vehicle* vehicle)
     auto window = m_Window = menuVSL->AddWindow();
     //window->m_Position = CVector2D(200, 200);
     window->m_Title = "Multi Remap";
+
+    auto test1 = window->AddButton("Set remap to pmesp", CRGBA(255, 255, 255));
+    test1->onClick = [vehicle]() {
+        multiRemap->SetVehicleRemap(vehicle->hVehicle, "pmesp");
+
+        auto remaps = multiRemap->GetModelInfoRemaps(vehicle->modelId);
+        auto currentRemap = multiRemap->GetVehicleRemap(vehicle->hVehicle);
+
+        menuVSL->debug->m_Visible = true;
+        menuVSL->debug->AddLine(std::to_string(remaps.size()) + " remaps");
+        menuVSL->debug->AddLine("currentRemap: " + currentRemap);
+    };
 
     window->AddText("Vehicle ID ~g~" + std::to_string(vehicle->modelId), CRGBA(255, 255, 255));
 

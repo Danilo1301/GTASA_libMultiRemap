@@ -28,9 +28,7 @@ extern RpMaterial* (*RpMaterialSetTexture)(RpMaterial* material, RwTexture* text
 extern void* (*FindPlayerPed)(int playerId);
 extern CVehicle* (*FindPlayerVehicle)(int playerId, bool bIncludeRemote);
 
-bool hasInitialized = false;
-
-std::string Mod::m_Version = "1.0.0";
+std::string Mod::m_Version = "1.1.0";
 
 void Mod::Update(int dt)
 {
@@ -51,31 +49,6 @@ void Mod::Update(int dt)
     //Log::Level(LOG_LEVEL::LOG_UPDATE) << "peds" << std::endl;
 
     Peds::Update(dt);
-
-    if(CleoFunctions::PLAYER_DEFINED(0))
-    {
-        auto playerPed = (CPed*)FindPlayerPed(0);
-        auto playerVehicle = FindPlayerVehicle(0, false);
-
-        //Log::Level(LOG_LEVEL::LOG_BOTH) << "playerPed: " << playerPed << std::endl;
-        //Log::Level(LOG_LEVEL::LOG_BOTH) << "vehicle: " << playerPed << std::endl;
-
-        if(!hasInitialized)
-        {
-            hasInitialized = true;
-            Init();
-        }
-
-        if(playerVehicle)
-        {
-            /*
-            if(Widgets::IsWidgetJustPressed(44)) //44 = arrow up | right of screen
-            {
-                ToggleMainMenu();
-            }
-            */
-        }
-    }
 }
 
 void Mod::Init()

@@ -45,13 +45,14 @@ Remap* RemapModelInfo::GetRandomRemap()
 
     for(auto p : remaps)
     {
-        Log::Level(LOG_LEVEL::LOG_BOTH) << "possible remap: " << p.first << std::endl;
+        //Log::Level(LOG_LEVEL::LOG_BOTH) << "possible remap: " << p.first << std::endl;
         vec.push_back(p.second);
     }
 
     int i = GetRandomNumber(0, vec.size() - 1);
+    auto remap = vec[i];
 
-    Log::Level(LOG_LEVEL::LOG_BOTH) << "selected i: " << i << ", name: " << vec[i]->name << std::endl;
+    Log::Level(LOG_LEVEL::LOG_BOTH) << "Random selected remap: " << remap->name << std::endl;
 
     return vec[i];
 }

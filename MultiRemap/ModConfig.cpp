@@ -279,6 +279,7 @@ std::string ModConfig::ReadVersionFile()
 void ModConfig::DefineVersions()
 {
     VersionControl::AddVersion("1.0.0");
+    VersionControl::AddVersion("1.1.0");
 
     VersionControl::SetVersion(ReadVersionFile(), Mod::m_Version);
 }

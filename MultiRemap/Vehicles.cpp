@@ -55,7 +55,7 @@ void Vehicles::TryFindNewVehicles()
         {
             //Log::Level(LOG_LEVEL::LOG_BOTH) << "Found " << ent.AsInt() << " ref " << ref << " siren " << (sirenOn ? "ON" : "OFF") << std::endl;
             //Log::Level(LOG_LEVEL::LOG_BOTH) << "driver " << driver << std::endl;
-            vehicle = TryCreateVehicle(ref);
+            TryCreateVehicle(ref);
         }
 
         vehicle = GetVehicleByHandle(ref);
@@ -103,9 +103,9 @@ Vehicle* Vehicles::TryCreateVehicle(int hVehicle)
         return GetVehicleByHandle(hVehicle);
     }
 
-    auto vehicle = new Vehicle(hVehicle);
+    Log::Level(LOG_LEVEL::LOG_BOTH) << "Vehicles: Add vehicle " << hVehicle << " (" << std::to_string(m_Vehicles.size() + 1) << " total)" << std::endl;
 
-	Log::Level(LOG_LEVEL::LOG_BOTH) << "Vehicles: Add vehicle " << hVehicle << ", ref: " << vehicle->pVehicle << ", model: " << vehicle->modelId << " (" << std::to_string(m_Vehicles.size() + 1) << " total)" << std::endl;
+    auto vehicle = new Vehicle(hVehicle);
 
 	m_Vehicles[hVehicle] = vehicle;
 

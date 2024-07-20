@@ -107,24 +107,40 @@ void Vehicle::RenderAfter()
 
 void Vehicle::SetRemap(std::string name)
 {
+    Log::Level(LOG_LEVEL::LOG_BOTH) << "Vehicle: SetRemap " << name << std::endl;
+
     auto modelInfo = RemapModelInfos::GetModelInfo(this->modelId);
 
-    if(!modelInfo) return;
+    if(!modelInfo)
+    {
+        Log::Level(LOG_LEVEL::LOG_BOTH) << "Model info " << this->modelId << " not found" << std::endl;
+        return;
+    }
 
-    if(!modelInfo->HasRemap(name)) return;
+    if(name == "random")
+    {
+        SetRandomRemap();
+        return;
+    }
+
+    if(!modelInfo->HasRemap(name))
+    {
+        Log::Level(LOG_LEVEL::LOG_BOTH) << "Model info does not have remap " << name << std::endl;
+        return;
+    }
+
+    Log::Level(LOG_LEVEL::LOG_BOTH) << "Set remap to: " << name << std::endl;
 
     remap = modelInfo->GetRemap(name);
-
-    Log::Level(LOG_LEVEL::LOG_BOTH) << "Set remap to: " << remap->name << std::endl;
 }
 
 void Vehicle::SetRandomRemap()
 {
+    Log::Level(LOG_LEVEL::LOG_BOTH) << "Vehicle: SetRandomRemap" << std::endl;
+
     auto modelInfo = RemapModelInfos::GetModelInfo(this->modelId);
 
     if(!modelInfo) return;
 
     remap = modelInfo->GetRandomRemap();
-
-    Log::Level(LOG_LEVEL::LOG_BOTH) << "Random remap selected: " << remap->name << std::endl;
 }
