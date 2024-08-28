@@ -28,7 +28,7 @@ extern RpMaterial* (*RpMaterialSetTexture)(RpMaterial* material, RwTexture* text
 extern void* (*FindPlayerPed)(int playerId);
 extern CVehicle* (*FindPlayerVehicle)(int playerId, bool bIncludeRemote);
 
-std::string Mod::m_Version = "1.2.0";
+std::string Mod::m_Version = "1.1.1";
 
 void Mod::Update(int dt)
 {
