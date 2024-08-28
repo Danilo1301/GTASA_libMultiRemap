@@ -1,6 +1,6 @@
 #include "Vehicle.h"
 
-#include "CleoFunctions.h"
+#include "CleoOpcodes.h"
 #include "Log.h"
 #include "Mod.h"
 #include "VehicleDummy.h"
@@ -27,7 +27,7 @@ Vehicle::Vehicle(int hVehicle)
 
     this->pVehicle = (CVehicle*)GetVehicleFromRef(hVehicle);
 
-    this->modelId = CleoFunctions::GET_CAR_MODEL(hVehicle);
+    this->modelId = GET_CAR_MODEL(hVehicle);
 
     SetRandomRemap();
 }
@@ -41,14 +41,18 @@ void Vehicle::Update(int dt)
 {
     //Log::Level(LOG_LEVEL::LOG_BOTH) << "Vehicle: update" << std::endl;
 
-    CVehicle* playerVehicle = FindPlayerVehicle(0, false);
+    //CVehicle* playerVehicle = FindPlayerVehicle(0, false);
 }
 
 void Vehicle::RenderBefore()
 {
-    CVehicle* playerVehicle = FindPlayerVehicle(0, false);
+    Log::Level(LOG_LEVEL::LOG_DEEP_UPDATE) << "RenderBefore " << hVehicle << std::endl;
+
+    //CVehicle* playerVehicle = FindPlayerVehicle(0, false);
 
     if(!remap) return;
+
+    Log::Level(LOG_LEVEL::LOG_DEEP_UPDATE) << "setting remap" << std::endl;
 
     auto atomics = VehicleDummy::RpClumpGetAllAtomics(pVehicle->m_pRwClump);
     for(auto atomic : atomics)
@@ -97,6 +101,8 @@ void Vehicle::RenderBefore()
 
 void Vehicle::RenderAfter()
 {
+    Log::Level(LOG_LEVEL::LOG_DEEP_UPDATE) << "RenderAfter " << hVehicle << std::endl;
+
     for (auto &p : resetEntries)
     *p.first = p.second;
     resetEntries.clear();

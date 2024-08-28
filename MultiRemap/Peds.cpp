@@ -3,7 +3,6 @@
 #include "SimpleGTA.h"
 
 #include "Log.h"
-#include "CleoFunctions.h"
 #include "Mod.h"
 
 extern uintptr_t* pPedPool;

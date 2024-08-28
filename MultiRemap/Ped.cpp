@@ -1,6 +1,6 @@
 #include "Ped.h"
 
-#include "CleoFunctions.h"
+#include "CleoOpcodes.h"
 #include "Log.h"
 #include "Mod.h"
 #include "VehicleDummy.h"
@@ -51,9 +51,9 @@ void Ped::UpdateVehicleRemap()
 
     if(!modelInfo) return;
 
-    if(!CleoFunctions::IS_CHAR_IN_ANY_CAR(hPed)) return;
+    if(!IS_CHAR_IN_ANY_CAR(hPed)) return;
 
-    auto vehicleHandle = CleoFunctions::ACTOR_USED_CAR(hPed);
+    auto vehicleHandle = ACTOR_USED_CAR(hPed);
 
     auto vehicle = Vehicles::GetVehicleByHandle(vehicleHandle);
 
@@ -69,7 +69,7 @@ void Ped::UpdateVehicleRemap()
 void Ped::UpdateSkin()
 {
     auto prevModelId = this->modelId;   
-    this->modelId = CleoFunctions::GET_CHAR_MODEL(hPed);
+    this->modelId = GET_ACTOR_MODEL(hPed);
 
     if(prevModelId != modelId)
     {

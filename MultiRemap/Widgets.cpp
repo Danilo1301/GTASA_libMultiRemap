@@ -1,5 +1,5 @@
 #include "Widgets.h"
-#include "CleoFunctions.h"
+#include "CleoOpcodes.h"
 #include "Log.h"
 
 std::map<int, WidgetData> Widgets::m_Widgets;
@@ -38,7 +38,7 @@ bool Widgets::IsWidgetPressed(int widgetId)
         //Log::file << "[Widgets] Created new widgetData, pressed " << (m_Widgets[widgetId].isPressed ? "1" : "0") << "" << std::endl;
     }
 
-    bool pressed = CleoFunctions::IS_WIDGET_PRESSED(widgetId);
+    bool pressed = IS_WIDGET_PRESSED(widgetId);
 
     WidgetData* data = &m_Widgets[widgetId];
 

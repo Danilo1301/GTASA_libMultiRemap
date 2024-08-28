@@ -5,7 +5,7 @@
 #include <mod/config.h>
 
 #include "Log.h"
-#include "CleoFunctions.h"
+#include "CleoOpcodes.h"
 #include "Widgets.h"
 #include "Vehicles.h"
 #include "Peds.h"
@@ -28,15 +28,11 @@ extern RpMaterial* (*RpMaterialSetTexture)(RpMaterial* material, RwTexture* text
 extern void* (*FindPlayerPed)(int playerId);
 extern CVehicle* (*FindPlayerVehicle)(int playerId, bool bIncludeRemote);
 
-std::string Mod::m_Version = "1.1.0";
+std::string Mod::m_Version = "1.2.0";
 
 void Mod::Update(int dt)
 {
     //Log::Level(LOG_LEVEL::LOG_UPDATE) << "Mod: Update " << dt << std::endl;
-
-    //Log::Level(LOG_LEVEL::LOG_UPDATE) << "cleofunctions" << std::endl;
-
-    CleoFunctions::Update(dt);
 
     //Log::Level(LOG_LEVEL::LOG_UPDATE) << "input" << std::endl;
 

@@ -31,7 +31,11 @@ Initial release
 [X] peds get their remap from their vehicle
 
 [1.1.1]
-[ ] add interface
+[X] add interface
+[ ] support to samp (fail)
+[X] fix issue when opening game without configs
+[X] menu vsl check version
+
 
 --------------------------
 Notes:

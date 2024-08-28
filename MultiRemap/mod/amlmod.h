@@ -6,15 +6,6 @@
 #include <ctype.h>
 #include <cstring>
 #include <stdlib.h>
-#include <signal.h>
-
-#ifdef __arm__
-    #define AML32
-#elif defined __aarch64__
-    #define AML64
-#else
-    #error This lib is supposed to work on ARM only!
-#endif
 
 #ifdef __clang__
     #define TARGET_ARM __attribute__((target("no-thumb-mode")))
@@ -63,7 +54,7 @@
     
 
 #define MINIMUM_MD5_BUF_SIZE 33
-
+    
 struct MemChunk_t
 {
     char* out;
@@ -123,16 +114,17 @@ public:
     inline unsigned short Minor() { return version.minor; }
     inline unsigned short Revision() { return version.revision; }
     inline unsigned short Build() { return version.build; }
-
+    inline void* Handle() { return handle; }
 private:
     char szGUID[48];
     char szName[48];
     char szVersion[24];
     char szAuthor[48];
     ModVersion version;
+    void* handle;
+    ModInfoDependency* dependencies;
 
     friend class ModsList;
-    friend class Mods;
 };
 
 typedef ModInfo* (*GetModInfoFn)();

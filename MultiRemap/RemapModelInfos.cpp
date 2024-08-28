@@ -14,6 +14,14 @@ void RemapModelInfos::Load()
 {
     Log::Level(LOG_LEVEL::LOG_BOTH) << "RemapModelInfos: Load" << std::endl;
 
+    auto remapsDir = ModConfig::GetConfigFolder() + "/remaps/";
+
+    if(!ModConfig::DirExists(remapsDir))
+    {
+        Log::Level(LOG_LEVEL::LOG_BOTH) << "/remaps folder was empty! Creating one..." << std::endl;
+        ModConfig::CreateFolder(remapsDir);
+    }
+
     LoadVehicles();
     LoadSkins();
 }
@@ -21,6 +29,12 @@ void RemapModelInfos::Load()
 void RemapModelInfos::LoadVehicles()
 {
     auto remapsDir = ModConfig::GetConfigFolder() + "/remaps/vehicles/";
+
+    if(!ModConfig::DirExists(remapsDir))
+    {
+        Log::Level(LOG_LEVEL::LOG_BOTH) << "/vehicles folder was empty! Creating one..." << std::endl;
+        ModConfig::CreateFolder(remapsDir);
+    }
 
     auto remapBaseNames = ModConfig::GetDirectoriesName(remapsDir);
     for(auto remapBaseName : remapBaseNames)
@@ -71,6 +85,12 @@ void RemapModelInfos::LoadVehicles()
 void RemapModelInfos::LoadSkins()
 {
     auto remapsDir = ModConfig::GetConfigFolder() + "/remaps/skins/";
+
+    if(!ModConfig::DirExists(remapsDir))
+    {
+        Log::Level(LOG_LEVEL::LOG_BOTH) << "/skins folder was empty! Creating one..." << std::endl;
+        ModConfig::CreateFolder(remapsDir);
+    }
 
     auto remapBaseNames = ModConfig::GetDirectoriesName(remapsDir);
     for(auto remapBaseName : remapBaseNames)
