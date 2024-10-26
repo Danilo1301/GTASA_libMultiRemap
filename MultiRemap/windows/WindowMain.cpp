@@ -64,14 +64,14 @@ void WindowMain::CreateVehicle(Vehicle* vehicle)
     //window->m_Position = CVector2D(200, 200);
     window->m_Title = "Multi Remap";
 
-    auto test1 = window->AddButton("Set remap to pmesp", CRGBA(255, 255, 255));
+    auto test1 = window->AddButton("Set remap to pmesp");
     test1->onClick = [vehicle]() {
         multiRemap->SetVehicleRemap(vehicle->hVehicle, "pmesp");
 
         auto remaps = multiRemap->GetModelInfoRemaps(vehicle->modelId);
         auto currentRemap = multiRemap->GetVehicleRemap(vehicle->hVehicle);
 
-        menuVSL->debug->m_Visible = true;
+        menuVSL->debug->visible = true;
         menuVSL->debug->AddLine(std::to_string(remaps.size()) + " remaps");
         menuVSL->debug->AddLine("currentRemap: " + currentRemap);
     };
@@ -86,7 +86,7 @@ void WindowMain::CreateVehicle(Vehicle* vehicle)
         {
             auto remap = p.second;
 
-            auto button = window->AddButton("> ~y~" + remap->name, CRGBA(0, 0, 0, 0));
+            auto button = window->AddButton("> ~y~" + remap->name);
             button->onClick = [vehicle, remap]() {
                 vehicle->SetRemap(remap->name);
             };
@@ -97,7 +97,7 @@ void WindowMain::CreateVehicle(Vehicle* vehicle)
         window->AddText("Este carro nao tem nenhum remap", CRGBA(255, 255, 255));
     }
 
-    auto close = window->AddButton("~r~Close", CRGBA(255, 255, 255));
+    auto close = window->AddButton("~r~Close");
     close->onClick = []() {
         Remove();
     };
@@ -128,7 +128,7 @@ void WindowMain::CreatePed(Ped* ped)
         {
             auto remap = p.second;
 
-            auto button = window->AddButton("> ~y~" + remap->name, CRGBA(0, 0, 0, 0));
+            auto button = window->AddButton("> ~y~" + remap->name);
             button->onClick = [ped, remap]() {
                 ped->SetRemap(remap->name);
             };
@@ -139,7 +139,7 @@ void WindowMain::CreatePed(Ped* ped)
         window->AddText("Esta skin nao tem nenhum remap", CRGBA(255, 255, 255));
     }
 
-    auto close = window->AddButton("~r~Close", CRGBA(255, 255, 255));
+    auto close = window->AddButton("~r~Close");
     close->onClick = []() {
         Remove();
     };
